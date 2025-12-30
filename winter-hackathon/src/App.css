@@ -1,0 +1,199 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  width: 800px;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  width: 90%;
+  max-width: 700px;
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+  text-align: center;
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+.btn-connect {
+  width: 100%;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  transition: transform 0.2s;
+}
+
+.btn-connect:hover {
+  transform: translateY(-2px);
+}
+
+.status-box {
+  background: #f7f9fc;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  border: 2px solid #e1e8ed;
+}
+
+.status-label {
+  font-size: 18px;
+  color: #666;
+  font-weight: 600;
+}
+
+.status-value {
+  font-size: 20px;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 8px;
+}
+
+.status-value.idle {
+  color: #10b981;
+  background: #d1fae5;
+}
+
+.status-value.forward,
+.status-value.reverse {
+  color: #f59e0b;
+  background: #fef3c7;
+  animation: pulse 1.5s infinite;
+}
+
+.status-value.paused {
+  color: #3b82f6;
+  background: #dbeafe;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.progress-container {
+  width: 100%;
+  height: 35px;
+  background: #e1e8ed;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-text {
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.button-container {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  flex: 1;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-inspect {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-stop {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+}
+
+.info {
+  text-align: center;
+}
+
+.sequence {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  justify-content: center;
+}
+
+.seq-item {
+  padding: 8px 15px;
+  background: #f0f0f0;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.seq-item.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.connection-info {
+  color: #999;
+  font-size: 12px;
+  margin-top: 10px;
+}
