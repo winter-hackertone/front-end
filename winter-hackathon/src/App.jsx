@@ -18,24 +18,21 @@ function App() {
       setPort(selectedPort);
       setConnected(true);
       
-      // Reader 설정
       const textDecoder = new TextDecoderStream();
       selectedPort.readable.pipeTo(textDecoder.writable);
       const reader = textDecoder.readable.getReader();
       readerRef.current = reader;
       
-      // Writer 설정
       const textEncoder = new TextEncoderStream();
       const writer = textEncoder.writable.getWriter();
       writerRef.current = writer;
       textEncoder.readable.pipeTo(selectedPort.writable);
       
-      // 데이터 읽기 시작
       readLoop(reader);
       
     } catch (error) {
       console.error('연결 실패:', error);
-      alert('ESP32 연결 실패! Chrome 브라우저를 사용하세요.');
+      alert('ESP32 연결 실패!');
     }
   };
 
@@ -70,23 +67,19 @@ function App() {
     }
   };
 
-  // 명령 전송
   const sendCommand = async (cmd) => {
     if (!writerRef.current) return;
     await writerRef.current.write(cmd + '\n');
   };
 
-  // 점검 시작
   const handleInspect = () => {
     sendCommand('INSPECT');
   };
 
-  // 중지
   const handleStop = () => {
     sendCommand('STOP');
   };
 
-  // 상태 텍스트
   const getStatusText = () => {
     switch (status) {
       case 'idle': return '대기 중';
@@ -97,7 +90,6 @@ function App() {
     }
   };
 
-  // 진행률
   const getProgress = () => {
     if (status === 'forward') {
       return Math.min((elapsed / 5000) * 33, 33);
@@ -154,13 +146,13 @@ function App() {
             <div className="info">
               <div className="sequence">
                 <div className={`seq-item ${status === 'forward' ? 'active' : ''}`}>
-                  ① 정방향 5초
+                  정방향 5초
                 </div>
                 <div className={`seq-item ${status === 'paused' ? 'active' : ''}`}>
-                  ② 정지 3초
+                  정지 3초
                 </div>
                 <div className={`seq-item ${status === 'reverse' ? 'active' : ''}`}>
-                  ③ 역방향 5초
+                  역방향 5초
                 </div>
               </div>
             </div>
